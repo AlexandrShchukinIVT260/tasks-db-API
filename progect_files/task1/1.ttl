@@ -1,0 +1,282 @@
+@base <http://www.vstu.ru/poas/code> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+# input: A{b:B, k:int} B{c:*C} C{d:int} variables: a:A target:d
+
+# --------- Классы (в задаче) ---------
+
+<#A>
+    a <#Item> ;
+    <#item_type> <#Class> ;
+    <#operand_type> <#ClassOperand> ;
+    <#name> "A"^^xsd:string ;
+    <#reachable_from> <#A> ;
+    <#is_a> <#Class_A> ;
+    <#primary_is_a> <#Class_A> ;
+    <#was_visited_before> "false"^^xsd:boolean ;
+    <#text> "A"^^xsd:string ;
+    <#operand_id> "8"^^xsd:integer .
+    
+
+<#B>
+    a <#Item> ;
+    <#item_type> <#Class> ;
+    <#operand_type> <#ClassOperand> ;
+    <#name> "B"^^xsd:string ;
+    <#reachable_from> <#B> ;
+    <#is_a> <#Class_B> ;
+    <#primary_is_a> <#Class_B> ;
+    <#was_visited_before> "false"^^xsd:boolean ;
+    <#text> "B"^^xsd:string ;
+    <#operand_id> "9"^^xsd:integer .
+
+<#C>
+    a <#Item> ;
+    <#item_type> <#Class> ;
+    <#operand_type> <#ClassOperand> ;
+    <#name> "C"^^xsd:string ;
+    <#reachable_from> <#C> ;
+    <#is_a> <#Class_C> ;
+    <#primary_is_a> <#Class_C> ;
+    <#was_visited_before> "false"^^xsd:boolean ;
+    <#text> "C"^^xsd:string ;
+    <#operand_id> "10"^^xsd:integer .
+
+# -------- Объекты --------
+
+<#a>
+    a <#Item> ;
+    <#item_type> <#ClassObject> ;
+    <#operand_type> <#ItemOperand> ;
+    <#instance_of> <#A> ;
+    <#contains> <#b> ;
+    <#contains> <#k> ;
+    <#reachable_from> <#a> ;
+    <#is_a> <#variable_a> ;
+    <#primary_is_a> <#variable_a> ;
+    <#has> <#field_a_b> ;
+    <#has> <#field_a_k> ;
+    <#name> "a"^^xsd:string ;
+    <#was_visited_before> "false"^^xsd:boolean ;
+    <#text> "a"^^xsd:string ;
+    <#operand_id> "11"^^xsd:integer ;
+    <#next> <#field_a_b> .
+
+<#b>
+    a <#Item> ;
+    <#item_type> <#ClassObject> ;
+    <#operand_type> <#ItemOperand> ;
+    <#instance_of> <#B> ;
+    <#contains> <#c> ;
+    <#contained_in> <#a> ;
+    <#reachable_from> <#a> ;
+    <#reachable_from> <#b> ;
+    <#is_a> <#field_a_b> ;
+    <#primary_is_a> <#field_a_b> ;
+    <#has> <#field_b_c> ;
+    <#name> "a.b"^^xsd:string ;
+    <#was_visited_before> "false"^^xsd:boolean ;
+    <#text> "a.b"^^xsd:string ;
+    <#operand_id> "12"^^xsd:integer ;
+    <#next> <#field_b_c> .
+
+<#c>
+    a <#Item> ;
+    <#item_type> <#Pointer> ;
+    <#contained_in> <#b> ;
+    <#reachable_from> <#a> ;
+    <#reachable_from> <#b> ;
+    <#reachable_from> <#c> ;
+    <#is_a> <#field_b_c> ;
+    <#primary_is_a> <#field_b_c> ;
+    <#has> <#point_to_c_d> ;
+    <#has> <#point_to_c_c> ;
+    <#name> "c"^^xsd:string ;
+    <#was_visited_before> "false"^^xsd:boolean ;
+    <#operand_type> <#PointerOperand> ;
+    <#linked_with> <#point_to_c_c> ;
+    <#var...> "currentItem"^^xsd:string ;
+    <#text> "a.b.c"^^xsd:string ;
+    <#operand_id> "13"^^xsd:integer ;
+    <#next> <#point_to_c_d> .
+
+<#c_p>
+    a <#Item> ;
+    <#item_type> <#ClassObject> ;
+    <#operand_type> <#ItemOperand> ;
+    <#instance_of> <#C> ;
+    <#contains> <#d> ;
+    <#reachable_from> <#c> ;
+    <#reachable_from> <#a> ;
+    <#reachable_from> <#b> ;
+    <#reachable_from> <#c_p> ;
+    <#is_a> <#point_to_c_c> ;
+    <#primary_is_a> <#point_to_c_c> ;
+    <#has> <#field_c_d> ;
+    <#name> ""^^xsd:string ;
+    <#was_visited_before> "false"^^xsd:boolean ;
+    <#text> "*(a.b.c)"^^xsd:string ;
+    <#operand_id> "14"^^xsd:integer ;
+    <#next> <#field_c_d> .
+
+<#k>
+    a <#Item> ;
+    <#item_type> <#IntegerValue> ;
+    <#operand_type> <#ItemOperand> ;
+    <#operand_type> <#IntegerOperand> ;
+    <#contained_in> <#a> ;
+    <#reachable_from> <#a> ;
+    <#reachable_from> <#k> ;
+    <#is_a> <#field_a_k> ;
+    <#primary_is_a> <#field_a_k> ;
+    <#name> "k"^^xsd:string ;
+    <#was_visited_before> "false"^^xsd:boolean ;
+    <#text> "a.k"^^xsd:string ;
+    <#operand_id> "15"^^xsd:integer .
+
+<#d>
+    a <#Item> ;
+    <#item_type> <#Value> ;
+    <#operand_type> <#IntegerOperand> ;
+    <#contained_in> <#c_p> ;
+    <#reachable_from> <#c> ;
+    <#reachable_from> <#c_p> ;
+    <#reachable_from> <#a> ;
+    <#reachable_from> <#b> ;
+    <#reachable_from> <#d> ;
+    <#is_a> <#field_c_d> ;
+    <#is_a> <#point_to_c_d> ;
+    <#primary_is_a> <#field_c_d> ; 
+    <#name> "d"^^xsd:string ;
+    <#was_visited_before> "false"^^xsd:boolean ;
+    <#var...> "nextItem"^^xsd:string ;
+    <#var...> "targetItem"^^xsd:string ;
+    <#text> "a.b.c->d"^^xsd:string ;
+    <#operand_id> "16"^^xsd:integer .
+
+# ------- Отношения принадлежности ----------
+
+<#field_a_b>
+    a <#Connection> ;
+    <#connection_type> <#Field> ;
+    <#source> <#a> ;
+    <#text> "b"^^xsd:string .
+
+<#field_a_k>
+    a <#Connection> ;
+    <#connection_type> <#Field> ;
+    <#source> <#a> ;
+    <#text> "k"^^xsd:string .
+
+<#field_b_c>
+    a <#Connection> ;
+    <#connection_type> <#Field> ;
+    <#source> <#b> ;
+    <#text> "c"^^xsd:string .
+
+<#field_c_d>
+    a <#Connection> ;
+    <#connection_type> <#Field> ;
+    <#source> <#c_p> ;
+    <#text> "d"^^xsd:string .
+
+<#point_to_c_d>
+    a <#Connection> ;
+    <#connection_type> <#PointedField> ;
+    <#source> <#c> ;
+    <#text> "d"^^xsd:string .
+
+<#point_to_c_c>
+    a <#Connection> ;
+    <#connection_type> <#PointedItem> ;
+    <#source> <#c> ;
+    <#text> ""^^xsd:string .
+
+<#variable_a>
+    a <#Connection> ;
+    <#connection_type> <#Variable> ;
+    <#text> "a"^^xsd:string .
+
+<#Class_A>
+    a <#Connection> ;
+    <#connection_type> <#ClassConnection> ;
+    <#text> "A"^^xsd:string .
+
+<#Class_B>
+    a <#Connection> ;
+    <#connection_type> <#ClassConnection> ;
+    <#text> "B"^^xsd:string .
+
+<#Class_C>
+    a <#Connection> ;
+    <#connection_type> <#ClassConnection> ;
+    <#text> "C"^^xsd:string .
+
+# -------- Входные данные --------------
+
+<#symbol>
+    a <#Element> ;
+    <#operator> <#arrow> ;
+    <#operand> <#item_name_a> ;
+    <#var...> "symbol"^^xsd:string .
+
+# ------------------- Операнды
+
+<#item_name_d>
+    a <#Operand> ;
+    <#operand_type> <#ItemName> ;
+    <#linked_with> <#point_to_c_d> ;
+    <#linked_with> <#field_c_d> ;
+    <#text> "d"^^xsd:string ;
+    <#operand_id> "3"^^xsd:integer .
+
+<#item_name_a>
+    a <#Operand> ;
+    <#operand_type> <#ItemName> ;
+    <#linked_with> <#variable_a> ;
+    <#text> "a"^^xsd:string ;
+    <#operand_id> "0"^^xsd:integer .
+
+<#item_name_b>
+    a <#Operand> ;
+    <#operand_type> <#ItemName> ;
+    <#linked_with> <#field_a_b> ;
+    <#text> "b"^^xsd:string ;
+    <#operand_id> "1"^^xsd:integer .
+
+<#item_name_c>
+    a <#Operand> ;
+    <#operand_type> <#ItemName> ;
+    <#linked_with> <#field_b_c> ;
+    <#text> "c"^^xsd:string ;
+    <#operand_id> "2"^^xsd:integer .
+
+<#item_name_k>
+    a <#Operand> ;
+    <#operand_type> <#ItemName> ;
+    <#linked_with> <#field_a_k> ;
+    <#text> "k"^^xsd:string ;
+    <#operand_id> "4"^^xsd:integer .
+
+<#item_name_A>
+    a <#Operand> ;
+    <#operand_type> <#ItemName> ;
+    <#linked_with> <#Class_A> ;
+    <#text> "A"^^xsd:string ;
+    <#operand_id> "5"^^xsd:integer .
+
+<#item_name_B>
+    a <#Operand> ;
+    <#operand_type> <#ItemName> ;
+    <#linked_with> <#Class_B> ;
+    <#text> "B"^^xsd:string ;
+    <#operand_id> "6"^^xsd:integer .
+
+<#item_name_C>
+    a <#Operand> ;
+    <#operand_type> <#ItemName> ;
+    <#linked_with> <#Class_C> ;
+    <#text> "C"^^xsd:string ;
+    <#operand_id> "7"^^xsd:integer .
+

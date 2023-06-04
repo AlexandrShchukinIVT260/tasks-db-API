@@ -1,0 +1,390 @@
+@base <http://www.vstu.ru/poas/code> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Example 1
+
+# Prefix
+
+<#cToken1>
+    a <#Token> ;
+    <#previous> <#startMarker> ;
+    <#name> "c"^^xsd:string .
+
+<#dToken2>
+    a <#Token> ;
+    <#name> "d"^^xsd:string ;
+    <#previous> <#cToken1> ;
+    <#var...> "currentToken"^^xsd:string .
+
+<#prefix>
+    a <#LocalPrefix> ;
+    <#end> <#dToken2> ;
+    <#hasNamedContext> "true"^^xsd:boolean ;
+    <#var...> "prefix"^^xsd:string .
+
+# Code
+
+<#global0>
+    a <#Context> ;
+    <#numOfStrInCode> "0"^^xsd:integer ;
+    <#contextType> <#global> ;
+    <#name> ""^^xsd:string ;
+    <#isStatic> "true"^^xsd:boolean ;
+    <#isBeforeOfUsageCt> ""^^xsd:boolean ;
+    <#contextRelation> <#c1InGlobal0Relation> ;
+    <#contextRelation> <#mainP6InGlobal0Relation> ;
+    <#lifecycle> <#static> ;
+    <#contextRelation> <#usage11InGlobal0Relation> .
+
+<#c1InGlobal0Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#c1> .
+
+<#global0InC1Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#global0> .
+
+<#usage11InGlobal0Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#usage11> .
+
+<#c1>
+    a <#DataStructure> ;
+    <#numOfStrInCode> "1"^^xsd:integer ;
+    <#contextType> <#class> ;
+    <#name> "c"^^xsd:string ;
+    <#isStatic> "true"^^xsd:boolean ;
+    <#parent> <#global0> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#contextRelation> <#global0InC1Relation> ;
+    <#contextRelation> <#a2InC1Relation> ;
+    <#contextRelation> <#d3InC1Relation> ;
+    <#contextRelation> <#mainP6InC1Relation> ;
+    <#lifecycle> <#static> ;
+    <#visiblyModifier> <#public> ;
+    <#contextRelation> <#usage11InC1Relation> .
+
+<#a2InC1Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#a2> .
+
+<#c1InA2Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#c1> .
+    
+<#usage11InC1Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#usage11> .
+
+<#a2>
+    a <#Context> ;
+    <#numOfStrInCode> "3"^^xsd:integer ;
+    <#contextType> <#declaration> ;
+    <#name> "a"^^xsd:string ;
+    <#isStatic> "true"^^xsd:boolean ;
+    <#parent> <#c1> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#contextRelation> <#c1InA2Relation> ;
+    <#contextRelation> <#d3InA2Relation> ;
+    <#lifecycle> <#static> ;
+    <#visiblyModifier> <#public> ;
+    <#contextRelation> <#usage11InA2Relation> .
+
+<#d3InC1Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#d3> .
+
+<#c1InD3Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#c1> .
+
+<#a2InD3Relation>
+    <#contextRelation> <#external> ;
+    <visiblyModifier> <#a2> .
+
+<#d3InA2Relation>
+    <#contextRelation> <#external> ;
+    <visiblyModifier> <#d3> .
+
+<#usage11InA2Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#usage11> .
+
+<#d3>
+    a <#DataStructure> ;
+    <#numOfStrInCode> "4"^^xsd:integer ;
+    <#contextType> <#class> ;
+    <#name> "d"^^xsd:string ;
+    <#isStatic> "true"^^xsd:boolean ;
+    <#parent> <#c1> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#visiblyModifier> <#public> ;
+    <#contextRelation> <#c1InD3Relation> ;
+    <#lifecycle> <#static> ;
+    <#contextRelation> <#b4InD3Relation> ;
+    <#contextRelation> <#f5InD3Relation> ;
+    <#contextRelation> <#a2InD3Relation> ;
+    <#contextRelation> <#g12InD3Relation> ;
+    <#contextRelation> <#usage11InD3Relation> .
+
+<#b4InD3Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#b4> .
+
+<#d3InB4Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#d3> .
+
+<#usage11InD3Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#usage11> .
+
+<#b4>
+    a <#Context> ;
+    <#numOfStrInCode> "6"^^xsd:integer ;
+    <#contextType> <#declaration> ;
+    <#name> "b"^^xsd:string ;
+    <#isStatic> "true"^^xsd:boolean ;
+    <#parent> <#d3> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#contextRelation> <#d3InB4Relation> ;
+    <#contextRelation> <#f5InB4Relation> ;
+    <#contextRelation> <#g12InB4Relation> ;
+    <#visiblyModifier> <#public> ;
+    <#lifecycle> <#static> ;
+    <#contextRelation> <#usage11InB4Relation> .
+
+<#f5InD3Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#f5> .
+
+<#d3InF5Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#d3> .
+
+<#b4InF5Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#b4> .
+
+<#f5InB4Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#f5> .
+
+<#usage11InB4Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#usage11> .
+
+<#g12>
+    a <#Context> ;
+    <#numOfStrInCode> "7"^^xsd:integer ;
+    <#contextType> <#declaration> ;
+    <#name> "g"^^xsd:string ;
+    <#isStatic> "false"^^xsd:boolean ;
+    <#parent> <#d3> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#lifecycle> <#dynamic> ;
+    <#visiblyModifier> <#public> ;
+    <#contextRelation> <#f5InG12Relation> .
+
+<#g12InD3Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#g12> .
+
+<#g12InB4Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <g12> .
+
+<#f5InG12Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#f5> .
+
+
+<#f5>
+    a <#Context> ;
+    <#numOfStrInCode> "9"^^xsd:integer ;
+    <#contextType> <#declaration> ;
+    <#name> "f"^^xsd:string ;
+    <#isStatic> "true"^^xsd:boolean ;
+    <#parent> <#d3> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#contextRelation> <#d3InF5Relation> ;
+    <#contextRelation> <#b4InF5Relation> ;
+    <#visiblyModifier> <#private> ;
+    <#lifecycle> <#static> ;
+    <#contextRelation> <#usage11InF5Relation> .
+
+<#c1InMainP6Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#c1> .
+
+<#mainP6InC1Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#mainP6> .
+
+<#global0InMainP6Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#global0> .
+
+<#mainP6InGlobal0Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#mainP6> .
+
+<#usage11InF5Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#usage11> .
+
+<#mainP6>
+    a <#Context> ;
+    <#numOfStrInCode> "12"^^xsd:integer ;
+    <#contextType> <#functionParams> ;
+    <#name> "main"^^xsd:string ;
+    <#isStatic> "false"^^xsd:boolean ;
+    <#parent> <#global0> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#contextRelation> <#c1InMainP6Relation> ;
+    <#contextRelation> <#global0InMainP6Relation> ;
+    <#contextRelation> <#mainB7InMainP6Relation> ;
+    <#lifecycle> <#dynamic> ;
+    <#contextRelation> <#usage11InMainP6Relation> .
+
+<#mainB7InMainP6Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#mainB7> .
+
+<#mainP6InMainB7Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#mainP6> .
+
+<#usage11InMainP6Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#usage11> .
+
+<#mainB7>
+    a <#Context> ;
+    <#numOfStrInCode> "12"^^xsd:integer ;
+    <#contextType> <#body> ;
+    <#name> ""^^xsd:string ;
+    <#isStatic> "false"^^xsd:boolean ;
+    <#parent> <#mainP6> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#contextRelation> <#mainP6InMainB7Relation> ;
+    <#contextRelation> <#forC8InMainB7Relation> ;
+    <#lifecycle> <#dynamic> ;
+    <#contextRelation> <#usage11InMainB7Relation> .
+
+<#mainB7InForC8Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#mainB7> .
+
+<#forC8InMainB7Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#forC8> .
+
+<#usage11InMainB7Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#usage11> .
+
+<#forC8>
+    a <#Context> ;
+    <#numOfStrInCode> "13"^^xsd:integer ;
+    <#contextType> <#forCondition> ;
+    <#name> ""^^xsd:string ;
+    <#isStatic> "false"^^xsd:boolean ;
+    <#parent> <#mainB7> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#contextRelation> <#mainB7InForC8Relation> ;
+    <#contextRelation> <#c9InForC8Relation> ;
+    <#contextRelation> <#forB10InForC8Relation> ;
+    <#lifecycle> <#dynamic> ;
+    <#contextRelation> <#usage11InForC8Relation> .
+
+<#c9InForC8Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#c9> .
+
+<#forC8InC9Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#forC8> .
+
+<#usage11InForC8Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#usage11> .
+
+<#c9>
+    a <#Context> ;
+    <#numOfStrInCode> "13"^^xsd:integer ;
+    <#contextType> <#declaration> ;
+    <#name> "c"^^xsd:string ;
+    <#isStatic> "false"^^xsd:boolean ;
+    <#parent> <#forC8> ;
+    <#visiblyModifier> <#public> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#contextRelation> <#forC8InC9Relation> ;
+    <#lifecycle> <#dynamic> ;
+    <#contextRelation> <#usage11InC9Relation> ; 
+    <#var...> "currentCt"^^xsd:string .
+
+<#forB10InForC8Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#forB10> .
+
+<#forC8InForB10Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#forC8> .
+
+<#usage11InC9Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#usage11> .
+
+<#forB10>
+    a <#Context> ;
+    <#numOfStrInCode> "13"^^xsd:integer ;
+    <#contextType> <#body> ;
+    <#name> ""^^xsd:string ;
+    <#isStatic> "false"^^xsd:boolean ;
+    <#parent> <#forC8> ;
+    <#isBeforeOfUsageCt> "true"^^xsd:boolean ;
+    <#contextRelation> <#forC8InForB10Relation> ;
+    <#contextRelation> <#usage11InForB10Relation> ;
+    <#lifecycle> <#dynamic> .
+
+<#forB10InUsage11Relation>
+    <#contextRelation> <#external> ;
+    <#contextRelation> <#forB10> .
+
+<#usage11InForB10Relation>
+    <#contextRelation> <#internal> ;
+    <#contextRelation> <#usage11> .
+
+<#usage11>
+    a <#Context> ;
+    <#numOfStrInCode> "14"^^xsd:integer ;
+    <#contextType> <#body> ;
+    <#name> ""^^xsd:string ;
+    <#var...> "usageCt"^^xsd:string ;
+    <#isStatic> "false"^^xsd:boolean ;
+    <#parent> <#forB10> ;
+    <#isBeforeOfUsageCt> "false"^^xsd:boolean ;
+    <#contextRelation> <#forB10InUsage11Relation> ;
+    <#lifecycle> <#dynamic> .
+
+
+
+# class c {
+# public:
+# 	static const int a = 0;
+# 	class d {
+# 	public:
+# 		static const int b = 1;
+#       int g = 3;
+# 	private:
+# 		static const int f = 2;
+# 	};
+# };
+# void main() {
+# 	for (int c = 0; ; ) {
+# 		// ( c::d:: )
+# 	}
+# }

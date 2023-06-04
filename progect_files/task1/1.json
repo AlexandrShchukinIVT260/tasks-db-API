@@ -1,0 +1,65 @@
+{
+    "condition": "В объекте a класа A есть поле b класса B, в котором есть указатель на объект c класса C с целочисленным полем d. Напишите выражение для получения доступа к d.",
+    "taskStructure": [
+        {
+            "type": "struct",
+            "text": "Класс A",
+            "elements": [
+                {
+                    "type": "variable",
+                    "text": "b : B",
+                    "elements": []
+                },
+                {
+                    "type": "variable",
+                    "text": "k : int",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "type": "struct",
+            "text": "Класс B",
+            "elements": [
+                {
+                    "type": "variable",
+                    "text": "c : C*",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "type": "struct",
+            "text": "Класс C",
+            "elements": [
+                {
+                    "type": "variable",
+                    "text": "d : int",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "availableOperands": [
+        {
+            "first": "a",
+            "second": "0"
+        },
+        {
+            "first": "b",
+            "second": "1"
+        },
+        {
+            "first": "c",
+            "second": "2"
+        },
+        {
+            "first": "d",
+            "second": "3"
+        },
+        {
+            "first": "k",
+            "second": "4"
+        }
+    ]
+}

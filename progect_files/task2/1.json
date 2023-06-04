@@ -1,0 +1,163 @@
+{
+    "id":"1",
+    "condition":{
+        "text":"Выберите из выделенных вариантов ответов те, которые видны в строке <span style=\"font-weight:bolder;\">14</span> по относительному пути (<span style=\"font-weight:bolder;\">c::d::</span>).",
+        "prefix":"c::d::",
+        "numberOfString":"14"
+    },
+    "code":[
+        {
+            "id":1,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"class c {",
+                "variables":[]
+            }
+        },
+        {
+            "id":2,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"public:",
+                "variables":[]
+            }
+        },
+        {
+            "id":3,
+            "presenceOfVariable":true,
+            "parsedString":{
+                "string":"  static const int %s = 0;",
+                "variables":[
+                    {
+                        "id":"a2",
+                        "name":"a"
+                    }
+                ]
+            }
+        },
+        {
+            "id":4,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"  class d {",
+                "variables":[]
+            }
+        },
+        {
+            "id":5,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"  public:",
+                "variables":[]
+            }
+        },
+        {
+            "id":6,
+            "presenceOfVariable":true,
+            "parsedString":{
+                "string":"      static const int %s = 1;",
+                "variables":[
+                    {
+                        "id":"b4",
+                        "name":"b"
+                    }
+                ]
+            }
+        },
+        {
+            "id":7,
+            "presenceOfVariable":true,
+            "parsedString":{
+                "string":"      int %s = 3;",
+                "variables":[
+                    {
+                        "id":"g12",
+                        "name":"g"
+                    }
+                ]
+            }
+        },
+        {
+            "id":8,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"  private:",
+                "variables":[]
+            }
+        },
+        {
+            "id":9,
+            "presenceOfVariable":true,
+            "parsedString":{
+                "string":"      static const int %s = 2;",
+                "variables":[
+                    {
+                        "id":"f5",
+                        "name":"f"
+                    }
+                ]
+            }
+        },
+        {
+            "id":10,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"  };",
+                "variables":[]
+            }
+        },
+        {
+            "id":11,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"};",
+                "variables":[]
+            }
+        },
+        {
+            "id":12,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"void main() {",
+                "variables":[]
+            }
+        },
+        {
+            "id":13,
+            "presenceOfVariable":true,
+            "parsedString":{
+                "string":"  for (int %s = 0; ; ) {",
+                "variables":[
+                    {
+                        "id":"c9",
+                        "name":"c"
+                    }
+                ]
+            }
+        },
+        {
+            "id":14,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"      // ( ... )",
+                "variables":[]
+            }
+        },
+        {
+            "id":15,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"  }",
+                "variables":[]
+            }
+        },
+        {
+            "id":16,
+            "presenceOfVariable":false,
+            "parsedString":{
+                "string":"}",
+                "variables":[]
+            }
+        }
+    ]
+}
